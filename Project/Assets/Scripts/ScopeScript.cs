@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ScopeScript : MonoBehaviour {
 
+    public Animator animator;
+
+    public 
+
 	// Use this for initialization
 	void Start () {
 		
