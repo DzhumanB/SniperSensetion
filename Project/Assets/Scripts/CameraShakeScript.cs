@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CameraShakeScript : MonoBehaviour {
 
+    private float timeCounter = 0;
+
+    public float speed=0;
+    public float width=0;
+    public float height=0;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,10 +17,17 @@ public class CameraShakeScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        timeCounter += Time.deltaTime; //* speed;
+
+        float x = Mathf.Cos(timeCounter);
+        float y = Mathf.Sin(timeCounter);
+        float z = 0;
+
+        transform.position = new Vector3(x, y, z);
 		
 	}
 
-    public IEnumerator Shake( float intensity)
+   /* public IEnumerator Shake( float intensity)
     {
         Vector3 originalPos = transform.localPosition;
 
@@ -23,5 +36,5 @@ public class CameraShakeScript : MonoBehaviour {
 
         transform.localPosition = new Vector3(x, y, originalPos.z);
         yield return null;
-    }
+    }*/ 
 }

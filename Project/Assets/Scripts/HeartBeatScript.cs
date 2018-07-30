@@ -9,9 +9,8 @@ public class HeartBeatScript : MonoBehaviour {
     private float multiplier = 1.5f;
 
     public bool Shaking;
-    public CameraShakeScript cameraShake;
 
-
+    public GameObject shakeObj;
     // This function starts befor the start
     private void Awake()
     {
@@ -27,7 +26,12 @@ public class HeartBeatScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        StartCoroutine(cameraShake.Shake(0.15f));
+        Vector3 originalPos = shakeObj.transform.localPosition;
+
+        float x = Random.Range(-1.0f, 1.0f) * multiplier;
+        float y = Random.Range(-1.0f, 1.0f) * multiplier;
+
+        //shakeObj.transform.localPosition = new Vector3(x, y, originalPos.z);
     }
 
     //
