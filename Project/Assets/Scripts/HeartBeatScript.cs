@@ -26,12 +26,13 @@ public class HeartBeatScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Vector3 originalPos = shakeObj.transform.localPosition;
+        /*Vector3 originalPos = shakeObj.transform.localPosition;
 
         float x = Random.Range(-1.0f, 1.0f) * multiplier;
         float y = Random.Range(-1.0f, 1.0f) * multiplier;
 
-        //shakeObj.transform.localPosition = new Vector3(x, y, originalPos.z);
+        shakeObj.transform.localPosition = new Vector3(x, y, originalPos.z);
+        */
     }
 
     //
