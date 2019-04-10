@@ -7,8 +7,8 @@ public class Movement8 : MonoBehaviour {
     private float timeCounter = 0;
     //private int x;
     //private int y;
-    private bool r_or_l = true;
-    public int numbe = 0;
+    // private bool r_or_l = true;
+    // public int numbe = 0;
 
 	// Use this for initialization
 	void Start () {
