@@ -8,7 +8,9 @@ public class SpreadShot : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        transform.rotation = Quaternion.EulerAngles(PickFiringDirection(this.transform.forward, 0.3f));
+        #pragma warning disable CS0618 // Il tipo o il membro è obsoleto
+        transform.rotation = Quaternion.EulerAngles(PickFiringDirection(transform.forward, 0.3f));
+        #pragma warning restore CS0618 // Il tipo o il membro è obsoleto
     }
 	
 	// Update is called once per frame

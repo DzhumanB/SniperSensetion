@@ -16,12 +16,10 @@ public class BohFunzionera : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
         /* Randomizzazioni di un quaternione, dopodichè la trasformazione da Quaternion a Euler e viceversa
          
         Quaternion randomRotation = Random.rotation;
@@ -36,6 +34,6 @@ public class BohFunzionera : MonoBehaviour {
         float x1 = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 20;
         float y2 = (tmp_pos * Mathf.Cos(timeCounter)) * 20;
 
-        transform.rotation = Quaternion.Euler(x1,y2,0);
+        transform.localRotation = Quaternion.Euler(x1 ,y2 , 0);
     }
 }

@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour
 
     //Enter the Speed of the Bullet from the Component Inspector.
     public float Bullet_Forward_Force;
-
+    
     // Use this for initialization
     void Start()
     {
