@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HeartBeatScript : MonoBehaviour {
 
-    public int heartBeatOnStart = 0;
-    public int heartBeatCurrent = 0;
-    private float multiplier = 1.5f;
+    //public int heartBeatOnStart = 0;
+    //public int heartBeatCurrent = 0;
+    //private float multiplier = 1.5f;
 
-    public bool Shaking;
+    //public bool Shaking;
 
-    public GameObject shakeObj;
+    //public GameObject shakeObj;
     // This function starts befor the start
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class HeartBeatScript : MonoBehaviour {
     //
     void FixedUpdate()
     {
-        heartBeatOnStart = 50;
+        /*heartBeatOnStart = 50;
         heartBeatCurrent = 60;
         int tmp = heartBeatCurrent - heartBeatOnStart;
         if (tmp < 0)
@@ -48,6 +48,6 @@ public class HeartBeatScript : MonoBehaviour {
         else
         {
             //StartCoroutine(cameraShake.Shake(1555.0f));
-        }
+        }*/
     }
 }

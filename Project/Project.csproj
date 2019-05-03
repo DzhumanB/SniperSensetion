@@ -324,8 +324,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\BohFunzionera.cs" />
-    <Compile Include="Assets\QuaternionLook.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\CameraLookAtScript.cs" />
     <Compile Include="Assets\Scripts\CameraShakeScript.cs" />
@@ -339,10 +337,11 @@
     <Compile Include="Assets\Scripts\ScopeScript.cs" />
     <Compile Include="Assets\Scripts\TargetScript.cs" />
     <Compile Include="Assets\Scripts\TCPServer.cs" />
+    <Compile Include="Assets\Scripts\ThirdPerson\ScopeInfinityMovement.cs" />
+    <Compile Include="Assets\Scripts\ThirdPerson\SpreadShot.cs" />
+    <Compile Include="Assets\Scripts\ThirdPerson\ThirdPersonCameraController.cs" />
+    <Compile Include="Assets\Scripts\ThirdPerson\ThirdPersonPlayerController.cs" />
     <Compile Include="Assets\Single_TEST\Movement8.cs" />
-    <Compile Include="Assets\SpreadShot.cs" />
-    <Compile Include="Assets\ThirdPersonCameraController.cs" />
-    <Compile Include="Assets\ThirdPersonPlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
