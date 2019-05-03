@@ -341,6 +341,7 @@
     <Compile Include="Assets\Scripts\TCPServer.cs" />
     <Compile Include="Assets\Single_TEST\Movement8.cs" />
     <Compile Include="Assets\SpreadShot.cs" />
+    <Compile Include="Assets\ThirdPersonCameraController.cs" />
     <Compile Include="Assets\ThirdPersonPlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
