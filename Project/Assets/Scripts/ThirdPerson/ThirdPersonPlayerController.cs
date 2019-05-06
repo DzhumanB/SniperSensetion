@@ -43,11 +43,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         // ThirdPerson's variables for support movement
         private ThirdPersonCharacter p_Character; // A reference to the ThirdPersonCharacter on the object
+        public Transform player;
         CapsuleCollider p_Capsule;
         private bool p_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
         Rigidbody p_Rigidbody;
         Vector3 p_CapsuleCenter;
         float p_CapsuleHeight;
+        
         
         // ThirdPersonPlayerAnimator's parameters
         Animator p_Animator;
@@ -88,6 +90,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             p_Character = GetComponent<ThirdPersonCharacter>();
         }
 
+        private void Update()
+        {
+            
+        }
+
         private void FixedUpdate()
         {
             // Call function for player movement
@@ -95,6 +102,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
             if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
             {
+                player.transform.rotation = new Quaternion(0, GetComponent<ThirdPersonCameraController>().target.rotation.y, 0, 0);
                 p_Animator.SetBool("Walk", true);
             }
 
@@ -104,13 +112,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
 
             // If player PRESS space, I set animator for make him jump
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKey("space"))
             {
                 p_Animator.SetBool("Jump", true);
             }
 
             // If player PRESS CTRL, I set animator for make him crouch
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKey(KeyCode.LeftControl))
             {
                 p_Animator.SetBool("Crouch", true);
             }
