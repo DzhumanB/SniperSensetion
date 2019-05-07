@@ -16,6 +16,7 @@ public class ScopeInfinityMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
 	}
 	
 	// Update is called once per frame
@@ -26,14 +27,15 @@ public class ScopeInfinityMovement : MonoBehaviour {
         Vector3 inEuler = randomRotation.eulerAngel;
         Quaternion inQuaternio = Quaternion.Euler(inEuler);
          */
+        bool scope = GameObject.Find("ScopeOverlay").activeSelf;
         timeCounter += Time.deltaTime;
         float tmp_pos = 2 / (3 - Mathf.Cos(2 * timeCounter));
-        float x = (tmp_pos * Mathf.Cos(timeCounter)) *10;
-        float y = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) *10;
+        float x = (tmp_pos * Mathf.Cos(timeCounter)) * 10;
+        float y = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 10;
 
-        //float x1 = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 20;
-        //float y2 = (tmp_pos * Mathf.Cos(timeCounter)) * 20;
-
-        transform.localRotation = Quaternion.Euler(x ,y , 0);
+        if (scope)
+        {
+            transform.localRotation = Quaternion.Euler(x, y, 0);
+        }
     }
 }
