@@ -934,6 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 230619329}
   - component: {fileID: 230619330}
+  - component: {fileID: 230619331}
   m_Layer: 8
   m_Name: BulletEmmiter
   m_TagString: Untagged
@@ -961,11 +962,23 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230619328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac728366ebf524f469b37934030d67d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &230619331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230619328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b9ead57753b8d45a53bdef0645f5ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 890897430}
 --- !u!1 &232502116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,7 +1741,7 @@ Transform:
   m_Children:
   - {fileID: 1623250007}
   m_Father: {fileID: 1735823552}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &440551543
 MonoBehaviour:
@@ -3470,6 +3483,34 @@ Transform:
   m_Father: {fileID: 1279431255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &890897429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 890897430}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &890897430
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 890897429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1286104333}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902121979
 GameObject:
   m_ObjectHideFlags: 0
@@ -4086,6 +4127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1024517034}
   scopeOverlay: {fileID: 1606599510}
+  bulletDirect: {fileID: 0}
   weaponCamera: {fileID: 1388843862}
   mainCam: {fileID: 1606569178}
   scopedFOV: 10
@@ -5067,6 +5109,47 @@ Transform:
   m_Father: {fileID: 1648974364}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1286104332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1286104333}
+  - component: {fileID: 1286104334}
+  m_Layer: 0
+  m_Name: bulletDirect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1286104333
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286104332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 890897430}
+  m_Father: {fileID: 1735823552}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1286104334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286104332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c78c04526b511f4a8d8428bf875644e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287074324
 GameObject:
   m_ObjectHideFlags: 0
@@ -7414,6 +7497,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.217, z: 0.069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1286104333}
   - {fileID: 440551542}
   - {fileID: 2141464186}
   m_Father: {fileID: 2124612006}
@@ -7429,7 +7513,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.33088237, g: 0.33088237, b: 0.33088237, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -9121,7 +9205,7 @@ Transform:
   - {fileID: 291345041}
   - {fileID: 230619329}
   m_Father: {fileID: 1735823552}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2141464187
 MonoBehaviour:
@@ -9152,6 +9236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2141464189}
   scopeOverlay: {fileID: 1606599510}
+  bulletDirect: {fileID: 1286104332}
   weaponCamera: {fileID: 1623250005}
   mainCam: {fileID: 1735823553}
   scopedFOV: 10

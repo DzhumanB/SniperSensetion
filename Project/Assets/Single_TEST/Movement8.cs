@@ -11,8 +11,8 @@ public class Movement8 : MonoBehaviour {
     // public int numbe = 0;
     private Vector3 startPos;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         startPos = transform.position;
     }
 	

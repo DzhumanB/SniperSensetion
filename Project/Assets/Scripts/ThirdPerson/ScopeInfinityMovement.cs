@@ -13,11 +13,11 @@ public class ScopeInfinityMovement : MonoBehaviour {
     */
 
     private float timeCounter = 0;
+    private bool scope;
 
     // Use this for initialization
     void Start () {
-
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,7 +27,7 @@ public class ScopeInfinityMovement : MonoBehaviour {
         Vector3 inEuler = randomRotation.eulerAngel;
         Quaternion inQuaternio = Quaternion.Euler(inEuler);
          */
-        bool scope = GameObject.Find("ScopeOverlay").activeSelf;
+        scope = GameObject.Find("ScopeOverlay").activeSelf;
         timeCounter += Time.deltaTime;
         float tmp_pos = 2 / (3 - Mathf.Cos(2 * timeCounter));
         float x = (tmp_pos * Mathf.Cos(timeCounter)) * 10;

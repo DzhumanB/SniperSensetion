@@ -6,6 +6,7 @@ public class GunScript : MonoBehaviour {
     public Animator animator;
 
     public GameObject scopeOverlay;
+    public GameObject bulletDirect;
 
     public GameObject weaponCamera;
 
@@ -43,6 +44,7 @@ public class GunScript : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.15f);
         scopeOverlay.SetActive(true);
+        bulletDirect.SetActive(true);
         weaponCamera.SetActive(false);
 
         normalFOV = mainCam.fieldOfView;
@@ -52,6 +54,7 @@ public class GunScript : MonoBehaviour {
     void OnUnScoped()
     {
         scopeOverlay.SetActive(false);
+        bulletDirect.SetActive(false);
         weaponCamera.SetActive(true);
 
         mainCam.fieldOfView = normalFOV;

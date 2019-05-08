@@ -324,6 +324,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MovementFar8.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
     <Compile Include="Assets\Scripts\CameraLookAtScript.cs" />
     <Compile Include="Assets\Scripts\CameraShakeScript.cs" />
