@@ -13,7 +13,8 @@ public class ScopeInfinityMovement : MonoBehaviour {
     */
 
     private float timeCounter = 0;
-    private bool scope;
+    //private bool scope;
+    //private float inputs;
 
     // Use this for initialization
     void Start () {
@@ -21,21 +22,21 @@ public class ScopeInfinityMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //scope = gameObject.GetComponent<GunScript>().scope;
+        //inputs = gameObject.GetComponent<InputChecker>().GetInputForScope();
+
         /* Randomizzazioni di un quaternione, dopodichè la trasformazione da Quaternion a Euler e viceversa
          
         Quaternion randomRotation = Random.rotation;
         Vector3 inEuler = randomRotation.eulerAngel;
         Quaternion inQuaternio = Quaternion.Euler(inEuler);
          */
-        scope = GameObject.Find("ScopeOverlay").activeSelf;
+        
         timeCounter += Time.deltaTime;
-        float tmp_pos = 2 / (3 - Mathf.Cos(2 * timeCounter));
+        float tmp_pos = 200 / (3 - Mathf.Cos(2 * timeCounter));
         float x = (tmp_pos * Mathf.Cos(timeCounter)) * 10;
         float y = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 10;
-
-        if (scope)
-        {
-            transform.localRotation = Quaternion.Euler(x, y, 0);
-        }
+        transform.localRotation = Quaternion.Euler(x, y, 0);
+        
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -42,6 +43,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        private float timeCounter = 0;
+        private float mouseX, mouseY;
+        private float rotationSpeed = 1;
+        public GameObject Holder;
+
         // Use this for initialization
         private void Start()
         {
@@ -54,14 +60,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+		    m_MouseLook.Init(transform , m_Camera.transform);
         }
 
 
         // Update is called once per frame
         private void Update()
         {
-            RotateView();
+            Holder.transform.rotation = m_Camera.transform.rotation;
+            if (GetInputForScope() == 0f && false )
+            {
+                RotateViewInScope();
+            }
+            else
+            {
+                RotateViewOutScope();
+            }
+
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
@@ -81,6 +96,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
         }
 
 
@@ -176,7 +192,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FootstepSounds[0] = m_AudioSource.clip;
         }
 
-
+        
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
@@ -199,7 +215,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
+        
 
+        private float GetInputForScope()
+        {
+            // Read input
+            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+
+            return horizontal + vertical;
+        }
 
         private void GetInput(out float speed)
         {
@@ -233,10 +258,28 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-
-        private void RotateView()
+        
+        private void RotateViewInScope()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            timeCounter += Time.deltaTime;
+            float tmp_pos = 1 / (3 - Mathf.Cos(2 * timeCounter));
+            float y = (tmp_pos * Mathf.Cos(timeCounter)) * 10;
+            float x = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 10;
+
+            mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
+            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
+            mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+            m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + mouseX, 0);
+        }
+
+        private void RotateViewOutScope()
+        {
+            mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
+            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
+            mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+            m_Camera.transform.localRotation = Quaternion.Euler(mouseY, mouseX, 0);
         }
 
 
