@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -11,9 +10,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] public bool m_IsWalking;
+		[SerializeField] public bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
-        [SerializeField] public float m_RunSpeed;
+		[SerializeField] public float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
@@ -43,14 +42,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-        private float timeCounter = 0;
-        private float mouseX, mouseY;
-        private float rotationSpeed = 1;
-        public GameObject Holder;
-        public GameObject Anatomy;
-        public GameObject Eyes;
-        private bool isInScope = true;
-
         // Use this for initialization
         private void Start()
         {
@@ -63,34 +54,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_NextStep = m_StepCycle/2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-		    m_MouseLook.Init(transform , m_Camera.transform);
+			m_MouseLook.Init(transform , m_Camera.transform);
+
         }
 
 
         // Update is called once per frame
         private void Update()
-        {/*
-            Holder.transform.rotation = m_Camera.transform.rotation;
-            if (Input.GetButtonDown("Fire2"))
-            {
-                RotateViewInScope();
-            }
-            else
-            {
-                RotateViewOutScope();
-            }*/
-
-            if ((Input.GetButtonDown("Fire2") && isInScope == true))
-            {
-                isInScope = false;
-            }
-            else if ((Input.GetButtonDown("Fire2") && isInScope == false))
-            {
-                isInScope = true;
-            }
-
+        {
             RotateView();
-
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
@@ -110,7 +82,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-
         }
 
 
@@ -161,6 +132,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             UpdateCameraPosition(speed);
 
             m_MouseLook.UpdateCursorLock();
+
         }
 
 
@@ -206,7 +178,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FootstepSounds[0] = m_AudioSource.clip;
         }
 
-        
+
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
@@ -229,16 +201,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             m_Camera.transform.localPosition = newCameraPosition;
         }
-        
 
-        private float GetInputForScope()
-        {
-            // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
-
-            return horizontal + vertical;
-        }
 
         private void GetInput(out float speed)
         {
@@ -272,52 +235,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
-        private void RotateView(){
-            timeCounter += Time.deltaTime;
-            float tmp_pos = 1 / (3 - Mathf.Cos(2 * timeCounter));
-            float y = (tmp_pos * Mathf.Cos(timeCounter)) * 10;
-            float x = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 10;
 
-            mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
-
-            Holder.transform.rotation = m_Camera.transform.rotation;
-            Anatomy.transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
-            Eyes.transform.rotation = Quaternion.Euler(mouseY, mouseX, 0f);
-            if (isInScope)
-            {
-                m_Camera.transform.localRotation = Quaternion.Euler(mouseY, mouseX, 0f);
-            }
-            else
-            {
-                m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + mouseX, 0f);
-            }
-        }
-
-        private void RotateViewInScope()
+        private void RotateView()
         {
-            timeCounter += Time.deltaTime;
-            float tmp_pos = 1 / (3 - Mathf.Cos(2 * timeCounter));
-            float y = (tmp_pos * Mathf.Cos(timeCounter)) * 10;
-            float x = (tmp_pos * Mathf.Sin(2 * timeCounter) / 2) * 10;
-
-            mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
-
-            Anatomy.transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
-            m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + mouseX, 0);
-        }
-
-        private void RotateViewOutScope()
-        {
-            mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-            mouseY = Mathf.Clamp(mouseY, -35, 60);
-
-            Anatomy.transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
-            m_Camera.transform.localRotation = Quaternion.Euler(mouseY, mouseX, 0);
+            m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
 
 
