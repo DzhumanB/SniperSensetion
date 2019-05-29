@@ -285,13 +285,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Holder.transform.rotation = m_Camera.transform.rotation;
             Anatomy.transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
             Eyes.transform.rotation = Quaternion.Euler(mouseY, mouseX, 0f);
+            transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
             if (isInScope)
             {
-                m_Camera.transform.localRotation = Quaternion.Euler(mouseY, mouseX, 0f);
+                m_Camera.transform.localRotation = Quaternion.Euler(mouseY, 0f, 0f);
             }
             else
             {
-                m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + mouseX, 0f);
+                m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + 0, 0f);
             }
         }
 
