@@ -51,6 +51,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public GameObject Eyes;
         private bool isInScope = true;
 
+        private Animator animator;
+
         // Use this for initialization
         private void Start()
         {
@@ -64,6 +66,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 		    m_MouseLook.Init(transform , m_Camera.transform);
+
+            animator = GetComponent<Animator>();
         }
 
 
@@ -246,6 +250,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
+            /*Animator Control SET*/
+            animator.SetFloat("VelocityX", horizontal);
+            animator.SetFloat("VelocityY", vertical);
+
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT
@@ -295,7 +303,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + 0, 0f);
             }
         }
-
+        /*
         private void RotateViewInScope()
         {
             timeCounter += Time.deltaTime;
@@ -310,7 +318,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             Anatomy.transform.rotation = Quaternion.Euler(0f, mouseX, 0f);
             m_Camera.transform.localRotation = Quaternion.Euler(x + mouseY, y + mouseX, 0);
         }
-
+    
         private void RotateViewOutScope()
         {
             mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
@@ -336,6 +344,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
-        }
+        }*/
     }
 }
