@@ -52,6 +52,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool isInScope = true;
 
         private Animator animator;
+        private float spdWalk = 3.5f;
+        private float spdRun = 7.0f;
+        private float spdCrouch = 2.0f;
+        private float spdProne = 1.0f;
 
         // Use this for initialization
         private void Start()

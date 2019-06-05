@@ -61,7 +61,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NetworkManagerCustom2.cs" />
     <Compile Include="Assets\OurScripts\BulletScript.cs" />
     <Compile Include="Assets\OurScripts\CameraLookAtScript.cs" />
     <Compile Include="Assets\OurScripts\CameraShakeScript.cs" />
@@ -71,6 +70,7 @@
     <Compile Include="Assets\OurScripts\HeartBeatScript.cs" />
     <Compile Include="Assets\OurScripts\InputChecker.cs" />
     <Compile Include="Assets\OurScripts\MovementFar8.cs" />
+    <Compile Include="Assets\OurScripts\NetworkManagerCustom2.cs" />
     <Compile Include="Assets\OurScripts\PlayerAnimController.cs" />
     <Compile Include="Assets\OurScripts\PlayerController.cs" />
     <Compile Include="Assets\OurScripts\PlayerMotor.cs" />
