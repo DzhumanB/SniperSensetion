@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/_Scenes/Gameplay_TEST.unity
+- path: Assets/_Scenes/GameMap.unity
   isLoaded: 1
   isActive: 1
